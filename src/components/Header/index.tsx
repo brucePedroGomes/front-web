@@ -8,6 +8,7 @@ import {
 import { IoCartSharp } from 'react-icons/io5';
 import { FaStoreAlt } from 'react-icons/fa';
 import { useCart } from '../../hooks/useCart';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const { cart } = useCart();
@@ -37,15 +38,19 @@ export const Header = () => {
         direction="row"
         alignItems="center"
         position="relative"
+        as={Link}
+        to="/checkout"
       >
+        (
         <IconButton
-          aria-label=""
+          aria-label="cart"
           boxSize="14"
           fontSize="x-large"
           bg="none"
           color="blackAlpha.800"
           icon={<Icon as={IoCartSharp} />}
         />
+        )
         <Center
           border="2px"
           bg="white"
