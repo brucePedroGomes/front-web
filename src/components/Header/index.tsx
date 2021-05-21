@@ -2,7 +2,6 @@ import {
   Flex,
   Icon,
   IconButton,
-  Text,
   Stack,
   Center,
 } from '@chakra-ui/react';
@@ -14,7 +13,7 @@ export const Header = () => {
     <Flex
       justifyContent="flex-end"
       px="28"
-      bg="gray.500"
+      bg="gray.300"
       as="header"
       h="28"
       align="center"

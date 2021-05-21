@@ -23,6 +23,22 @@
       "image": ""
     },
     {
+      "id": 11,
+      "idCategory": 0,
+      "name": "Pepsi lata",
+      "description": "Refrigerante Pepsi 269ml",
+      "price": 3.5,
+      "image": ""
+    },
+    {
+      "id": 6,
+      "idCategory": 0,
+      "name": "Refrigerante Sprite lata",
+      "description": "Refrigerante Sabor Limão Sprite 220ml",
+      "price": 3.5,
+      "image": ""
+    },
+    {
       "id": 1,
       "idCategory": 0,
       "name": "Coca-cola pet",
@@ -38,7 +54,38 @@
       "price": 3.5,
       "image": ""
     },
-
+    {
+      "id": 5,
+      "idCategory": 1,
+      "name": "Caixa de Bombom",
+      "description": "Caixa de Bombom Favoritos Lacta 250,6g",
+      "price": 3.5,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "idCategory": 1,
+      "name": "Chocolate branco barra",
+      "description": "Chocolate branco barra 500g",
+      "price": 3.5,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "idCategory": 1,
+      "name": "Chocolate Baton",
+      "description": "Chocolate Baton Recheado Ao Leite Garoto 480g",
+      "price": 3.5,
+      "image": ""
+    },
+    {
+      "id": 8,
+      "idCategory": 1,
+      "name": "Chocolate Peccin",
+      "description": "Chocolate Peccin Trento Chocolate 32g",
+      "price": 3.5,
+      "image": ""
+    },
     {
       "id": 3,
       "idCategory": 2,

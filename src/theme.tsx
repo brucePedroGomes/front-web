@@ -6,6 +6,6 @@ export const theme = extendTheme({
     body: 'Roboto',
   },
   config: {
-    initialColorMode: 'dark',
+    initialColorMode: 'light',
   },
 });

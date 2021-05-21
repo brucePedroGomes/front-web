@@ -14,6 +14,7 @@ import { Header } from '../../components/Header';
 import { api } from '../../services/api';
 
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { Products } from './Products';
 
 type Categories = {
   id: number;
@@ -47,14 +48,13 @@ export const Home = () => {
       <Stack m="16" alignItems="center">
         <Menu onClose={onClose} onOpen={onOpen}>
           <MenuButton
+            border="2px"
             px={4}
             py={2}
             w={600}
             transition="all 0.2s"
             borderRadius="md"
             borderWidth="1px"
-            _hover={{ bg: 'gray.600' }}
-            _expanded={{ bg: 'gray.600' }}
             _focus={{ boxShadow: 'outline' }}
           >
             <Flex alignItems="center" justifyContent="space-between">
@@ -68,19 +68,21 @@ export const Home = () => {
             </Flex>
           </MenuButton>
           <MenuList w={600}>
-            {categories.length > 0 &&
-              categories.map((category) => (
-                <MenuItem
-                  key={category.id}
-                  value={category.id}
-                  onClick={() => handleCategorySelection(category.id)}
-                >
-                  {category.name}
-                </MenuItem>
-              ))}
+            {categories.map((category) => (
+              <MenuItem
+                key={category.id}
+                value={category.id}
+                onClick={() => {
+                  handleCategorySelection(category.id);
+                }}
+              >
+                {category.name}
+              </MenuItem>
+            ))}
           </MenuList>
         </Menu>
       </Stack>
+      <Products categoryId={selectedCategory?.id} />
     </>
   );
 };
