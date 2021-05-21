@@ -7,13 +7,16 @@ import {
 } from '@chakra-ui/react';
 import { IoCartSharp } from 'react-icons/io5';
 import { FaStoreAlt } from 'react-icons/fa';
+import { useCart } from '../../hooks/useCart';
 
 export const Header = () => {
+  const { cart } = useCart();
+
   return (
     <Flex
       justifyContent="flex-end"
       px="28"
-      bg="gray.300"
+      bg="gray.200"
       as="header"
       h="28"
       align="center"
@@ -54,7 +57,7 @@ export const Header = () => {
           right="1"
           position="absolute"
         >
-          0
+          {cart.length}
         </Center>
       </Stack>
     </Flex>

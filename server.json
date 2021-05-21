@@ -23,7 +23,7 @@
       "image": ""
     },
     {
-      "id": 11,
+      "id": 1,
       "idCategory": 0,
       "name": "Pepsi lata",
       "description": "Refrigerante Pepsi 269ml",
@@ -31,7 +31,7 @@
       "image": ""
     },
     {
-      "id": 6,
+      "id": 2,
       "idCategory": 0,
       "name": "Refrigerante Sprite lata",
       "description": "Refrigerante Sabor Limão Sprite 220ml",
@@ -39,15 +39,15 @@
       "image": ""
     },
     {
-      "id": 1,
+      "id": 3,
       "idCategory": 0,
       "name": "Coca-cola pet",
-      "description": "Coca-cola lata 2l",
+      "description": "Coca-cola 2l",
       "price": 7.5,
       "image": ""
     },
     {
-      "id": 2,
+      "id": 4,
       "idCategory": 1,
       "name": "Chocolate barra",
       "description": "Chocolate barra 500g",
@@ -63,7 +63,7 @@
       "image": ""
     },
     {
-      "id": 4,
+      "id": 6,
       "idCategory": 1,
       "name": "Chocolate branco barra",
       "description": "Chocolate branco barra 500g",
@@ -71,7 +71,7 @@
       "image": ""
     },
     {
-      "id": 9,
+      "id": 7,
       "idCategory": 1,
       "name": "Chocolate Baton",
       "description": "Chocolate Baton Recheado Ao Leite Garoto 480g",
@@ -87,7 +87,7 @@
       "image": ""
     },
     {
-      "id": 3,
+      "id": 9,
       "idCategory": 2,
       "name": "Mini coxinha congelada",
       "description": "Mini coxinha congelada caixa 300g",

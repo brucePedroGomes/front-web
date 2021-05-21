@@ -1,6 +1,6 @@
 import { Stack, Text, Button, Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { useCart } from '../../hooks';
+import { useCart } from '../../hooks/useCart';
 import { api } from '../../services/api';
 
 type Product = {
