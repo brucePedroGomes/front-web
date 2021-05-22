@@ -1,3 +1,4 @@
+import { useToast } from '@chakra-ui/toast';
 import {
   createContext,
   ReactNode,
@@ -19,7 +20,9 @@ type Product = {
 
 type CartContextData = {
   cart: Product[];
-  addProduct: (productId: number) => void;
+  addProduct: (productId: number) => Promise<void>;
+  removeProduct: (productId: number) => void;
+  updateProductAmount: (productId: number, amount: number) => void;
 };
 
 const CartContext = createContext<CartContextData>(
@@ -32,36 +35,90 @@ export const CartProvider = ({
   children: ReactNode;
 }) => {
   const [cart, setCart] = useState<Product[]>([]);
+  const toast = useToast();
 
   const addProduct = async (productId: number) => {
-    const productExists = cart.find(
-      (product) => product.id === productId
-    );
-
-    if (!productExists) {
-      const { data: product } = await api.get(
-        `/products/${productId}`
+    try {
+      const productExists = cart.find(
+        (product) => product.id === productId
       );
 
-      const productRequested = {
-        ...product,
-        amount: 1,
-      };
+      if (!productExists) {
+        const { data: product } = await api.get(
+          `/products/${productId}`
+        );
 
-      setCart([...cart, productRequested]);
-    } else {
-      const newCart = cart.map((product) =>
-        product.id === productId
-          ? { ...product, amount: product.amount + 1 }
-          : product
-      );
+        const productRequested = {
+          ...product,
+          amount: 1,
+        };
 
-      setCart(newCart);
+        setCart([...cart, productRequested]);
+      } else {
+        const newCart = cart.map((product) =>
+          product.id === productId
+            ? { ...product, amount: product.amount + 1 }
+            : product
+        );
+
+        setCart(newCart);
+      }
+
+      toast({
+        title: 'Produto adicionado ao carrinho!',
+        status: 'success',
+        position: 'bottom-left',
+      });
+    } catch {
+      toast({
+        title: 'Erro na adição do produto!',
+        status: 'error',
+        position: 'bottom-left',
+      });
     }
   };
 
+  const removeProduct = (productId: number) => {
+    const product = cart.find((product) => product.id === productId);
+
+    if (!product) {
+      toast({
+        title: 'Erro na remoção do produto',
+        status: 'error',
+        position: 'bottom-left',
+      });
+    }
+
+    setCart(cart.filter((product) => product.id !== productId));
+  };
+
+  const updateProductAmount = (productId: number, amount: number) => {
+    if (amount <= 0) {
+      removeProduct(productId);
+      return;
+    }
+
+    const product = cart.find((product) => product.id === productId);
+
+    if (!product) {
+      toast({
+        title: 'Erro na remoção do produto',
+        status: 'error',
+        position: 'bottom-left',
+      });
+    }
+
+    setCart(
+      cart.map((product) =>
+        product.id === productId ? { ...product, amount } : product
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addProduct }}>
+    <CartContext.Provider
+      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -63,7 +63,6 @@ export const Products = ({ categoryId }: Props) => {
           <Text>{product.name}</Text>
           <Button
             boxShadow="4px 4px"
-            borderRadius="0"
             h="8"
             onClick={() => handleAddProduct(product.id)}
           >
