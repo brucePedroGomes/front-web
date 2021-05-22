@@ -6,14 +6,21 @@ import {
   Stack,
   HStack,
   Button,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useCart } from '../../hooks/useCart';
 import { GiShoppingBag } from 'react-icons/gi';
-import { CartTable } from './Table';
+import { CartTable } from '../../components/Table';
 import { formatPrice } from '../../utils/formatPrice';
+import { AlertModal } from '../../components/AlertModal';
+import { useHistory } from 'react-router';
+import { CheckoutModal } from '../../components/CheckoutModal';
 
 export const Cart = () => {
-  const { cart } = useCart();
+  const { cart, removeAllProducts } = useCart();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const history = useHistory();
 
   const total = formatPrice(
     cart.reduce((sumTotal, product) => {
@@ -21,10 +28,32 @@ export const Cart = () => {
     }, 0)
   );
 
+  const handleCheckout = () => {
+    onClose();
+    history.push('/');
+    removeAllProducts();
+  };
+
   return (
     <Stack spacing="16" alignItems="center">
       <Flex direction="column" align="center" m="8">
         <Heading>Finalizar pedido</Heading>
+
+        <AlertModal
+          title="Seu carrinho está vazio."
+          body="Voltar para lista de produtos"
+        />
+
+        <CheckoutModal
+          isOpen={isOpen}
+          onClose={onClose}
+          title="bla bla"
+          body="Pedido realizado com sucesso!"
+        >
+          <Button colorScheme="green" onClick={handleCheckout}>
+            Fechar
+          </Button>
+        </CheckoutModal>
 
         <Flex
           alignItems="center"
@@ -44,7 +73,7 @@ export const Cart = () => {
           <CartTable />
 
           <HStack justifyContent="space-between">
-            <Button>Finalizar compra</Button>
+            <Button onClick={onOpen}>Finalizar compra</Button>
             <HStack alignItems="center">
               <Text color="gray.400">Total</Text>
               <Text fontSize="32" fontWeight="bold">

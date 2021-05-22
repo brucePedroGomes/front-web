@@ -1,6 +1,7 @@
 import { useToast } from '@chakra-ui/toast';
-import {
+import React, {
   createContext,
+  Dispatch,
   ReactNode,
   useContext,
   useState,
@@ -23,6 +24,7 @@ type CartContextData = {
   addProduct: (productId: number) => Promise<void>;
   removeProduct: (productId: number) => void;
   updateProductAmount: (productId: number, amount: number) => void;
+  removeAllProducts: () => void;
 };
 
 const CartContext = createContext<CartContextData>(
@@ -115,9 +117,19 @@ export const CartProvider = ({
     );
   };
 
+  const removeAllProducts = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+      value={{
+        cart,
+        addProduct,
+        removeProduct,
+        updateProductAmount,
+        removeAllProducts,
+      }}
     >
       {children}
     </CartContext.Provider>
