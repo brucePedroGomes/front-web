@@ -31,7 +31,6 @@ export const Products = ({ categoryId }: Props) => {
   }, []);
 
   const handleAddProduct = (productId: number) => {
-    console.log('chamei mano', productId);
     addProduct(productId);
   };
 
@@ -45,7 +44,7 @@ export const Products = ({ categoryId }: Props) => {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      mt="24"
+      mt="16"
     >
       {productList.map((product) => (
         <Stack
@@ -64,6 +63,7 @@ export const Products = ({ categoryId }: Props) => {
           <Text>{product.name}</Text>
           <Button
             boxShadow="4px 4px"
+            borderRadius="0"
             h="8"
             onClick={() => handleAddProduct(product.id)}
           >

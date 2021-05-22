@@ -25,61 +25,93 @@
     {
       "id": 1,
       "idCategory": 0,
-      "name": "Pepsi lata",
-      "description": "Refrigerante Pepsi 269ml",
+      "name": "Sukita pet",
+      "description": "Refrigerante SUKITA TUTTI FRUTTI 2 l Garrafa",
       "price": 3.5,
       "image": ""
     },
     {
       "id": 2,
       "idCategory": 0,
-      "name": "Refrigerante Sprite lata",
-      "description": "Refrigerante Sabor Limão Sprite 220ml",
-      "price": 3.5,
+      "name": "Água Tônica Light",
+      "description": "Água Tônica Light RIVERSIDE 200ml",
+      "price": 4.5,
       "image": ""
     },
     {
       "id": 3,
       "idCategory": 0,
-      "name": "Coca-cola pet",
-      "description": "Coca-cola 2l",
-      "price": 7.5,
+      "name": "Coca-cola lata",
+      "description": "Coca-cola lata 350ml",
+      "price": 3.5,
       "image": ""
     },
     {
       "id": 4,
-      "idCategory": 1,
-      "name": "Chocolate barra",
-      "description": "Chocolate barra 500g",
-      "price": 3.5,
+      "idCategory": 0,
+      "name": "SCHWEPPES Ginger lata",
+      "description": "Refrigerante SCHWEPPES Ginger Ale Lata 220ml",
+      "price": 4.5,
       "image": ""
     },
     {
       "id": 5,
-      "idCategory": 1,
-      "name": "Caixa de Bombom",
-      "description": "Caixa de Bombom Favoritos Lacta 250,6g",
-      "price": 3.5,
+      "idCategory": 0,
+      "name": "Pepsi lata",
+      "description": "Refrigerante Pepsi 269ml",
+      "price": 2.5,
       "image": ""
     },
     {
       "id": 6,
-      "idCategory": 1,
-      "name": "Chocolate branco barra",
-      "description": "Chocolate branco barra 500g",
-      "price": 3.5,
+      "idCategory": 0,
+      "name": "Refrigerante Sprite lata",
+      "description": "Refrigerante Sabor Limão Sprite 220ml",
+      "price": 4.7,
       "image": ""
     },
     {
       "id": 7,
-      "idCategory": 1,
-      "name": "Chocolate Baton",
-      "description": "Chocolate Baton Recheado Ao Leite Garoto 480g",
-      "price": 3.5,
+      "idCategory": 0,
+      "name": "Coca-cola pet",
+      "description": "Coca-cola 2l",
+      "price": 9.5,
       "image": ""
     },
     {
       "id": 8,
+      "idCategory": 1,
+      "name": "Chocolate barra",
+      "description": "Chocolate barra 500g",
+      "price": 6.5,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "idCategory": 1,
+      "name": "Caixa de Bombom",
+      "description": "Caixa de Bombom Favoritos Lacta 250,6g",
+      "price": 23.5,
+      "image": ""
+    },
+    {
+      "id": 10,
+      "idCategory": 1,
+      "name": "Chocolate branco barra",
+      "description": "Chocolate branco barra 500g",
+      "price": 8.5,
+      "image": ""
+    },
+    {
+      "id": 11,
+      "idCategory": 1,
+      "name": "Chocolate Baton",
+      "description": "Chocolate Baton Recheado Ao Leite Garoto 480g",
+      "price": 43.5,
+      "image": ""
+    },
+    {
+      "id": 12,
       "idCategory": 1,
       "name": "Chocolate Peccin",
       "description": "Chocolate Peccin Trento Chocolate 32g",
@@ -87,11 +119,11 @@
       "image": ""
     },
     {
-      "id": 9,
+      "id": 13,
       "idCategory": 2,
       "name": "Mini coxinha congelada",
       "description": "Mini coxinha congelada caixa 300g",
-      "price": 4.5,
+      "price": 32.5,
       "image": ""
     }
   ]

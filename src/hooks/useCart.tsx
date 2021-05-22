@@ -34,9 +34,11 @@ export const CartProvider = ({
   const [cart, setCart] = useState<Product[]>([]);
 
   const addProduct = async (productId: number) => {
-    const product = cart.find((p) => p.id === productId);
+    const productExists = cart.find(
+      (product) => product.id === productId
+    );
 
-    if (!product) {
+    if (!productExists) {
       const { data: product } = await api.get(
         `/products/${productId}`
       );
@@ -48,8 +50,8 @@ export const CartProvider = ({
 
       setCart([...cart, productRequested]);
     } else {
-      const newCart = cart.map((p) =>
-        p.id === productId
+      const newCart = cart.map((product) =>
+        product.id === productId
           ? { ...product, amount: product.amount + 1 }
           : product
       );
