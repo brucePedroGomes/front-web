@@ -1,7 +1,7 @@
 import { Stack, Text, Button, Box } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { useCart } from '../../hooks/useCart';
-import { api } from '../../services/api';
+import { useEffect, useMemo, useState } from 'react';
+import { useCart } from '../hooks/useCart';
+import { api } from '../services/api';
 
 type Product = {
   id: number;
@@ -34,10 +34,13 @@ export const Products = ({ categoryId }: Props) => {
     addProduct(productId);
   };
 
-  const productList =
-    categoryId != null
-      ? products.filter((p) => p.idCategory === categoryId)
-      : products;
+  const productList = useMemo(
+    () =>
+      categoryId != null
+        ? products.filter((p) => p.idCategory === categoryId)
+        : products,
+    [products, categoryId]
+  );
 
   return (
     <Box

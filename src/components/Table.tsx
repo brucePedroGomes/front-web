@@ -10,10 +10,11 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { GrFormAdd, GrFormSubtract } from 'react-icons/gr';
-import { useCart } from '../../hooks/useCart';
-import { formatPrice } from '../../utils/formatPrice';
+
 import { ButtonIcon } from './ButtonIcon';
 import { VscTrash } from 'react-icons/vsc';
+import { useCart } from '../hooks/useCart';
+import { formatPrice } from '../utils/formatPrice';
 
 type Product = {
   id: number;
