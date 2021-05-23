@@ -14,17 +14,11 @@ import {
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 type Props = {
-  title: string;
   body: string;
   children: ReactNode;
 } & ModalProps;
 
-export const CheckoutModal = ({
-  title,
-  body,
-  children,
-  ...rest
-}: Props) => {
+export const CheckoutModal = ({ body, children, ...rest }: Props) => {
   return (
     <>
       <Modal {...rest} isCentered>

@@ -22,12 +22,12 @@ export const Products = ({ categoryId }: Props) => {
   const { addProduct } = useCart();
 
   useEffect(() => {
-    async function getProducts() {
+    async function loadProducts() {
       const response = await api.get(`/products`);
       setProducts(response.data);
     }
 
-    getProducts();
+    loadProducts();
   }, []);
 
   const handleAddProduct = (productId: number) => {

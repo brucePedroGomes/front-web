@@ -15,6 +15,8 @@ import { formatPrice } from '../../utils/formatPrice';
 import { AlertModal } from '../../components/AlertModal';
 import { useHistory } from 'react-router';
 import { CheckoutModal } from '../../components/CheckoutModal';
+import { Countdown } from '../../components/Countdown';
+import { useMemo } from 'react';
 
 export const Cart = () => {
   const { cart, removeAllProducts } = useCart();
@@ -22,11 +24,13 @@ export const Cart = () => {
 
   const history = useHistory();
 
-  const total = formatPrice(
-    cart.reduce((sumTotal, product) => {
-      return sumTotal + product.price * product.amount;
-    }, 0)
-  );
+  const total = useMemo(() => {
+    return formatPrice(
+      cart.reduce((sumTotal, product) => {
+        return sumTotal + product.price * product.amount;
+      }, 0)
+    );
+  }, [cart]);
 
   const handleCheckout = () => {
     onClose();
@@ -35,54 +39,56 @@ export const Cart = () => {
   };
 
   return (
-    <Stack spacing="16" alignItems="center">
-      <Flex direction="column" align="center" m="8">
-        <Heading>Finalizar pedido</Heading>
+    <>
+      <Stack spacing="16" alignItems="center">
+        <Flex direction="column" align="center" m="8">
+          <Heading>Finalizar pedido</Heading>
 
-        <AlertModal
-          title="Seu carrinho está vazio."
-          body="Voltar para lista de produtos"
-        />
+          <AlertModal
+            title="Seu carrinho está vazio."
+            body="Voltar para lista de produtos"
+          />
 
-        <CheckoutModal
-          isOpen={isOpen}
-          onClose={onClose}
-          title="bla bla"
-          body="Pedido realizado com sucesso!"
-        >
-          <Button colorScheme="green" onClick={handleCheckout}>
-            Fechar
-          </Button>
-        </CheckoutModal>
+          <CheckoutModal
+            closeOnOverlayClick={false}
+            isOpen={isOpen}
+            onClose={onClose}
+            body="Pedido realizado com sucesso!"
+          >
+            <Button colorScheme="green" onClick={handleCheckout}>
+              Fechar
+            </Button>
+          </CheckoutModal>
 
-        <Flex
-          alignItems="center"
-          marginY="12"
-          w="full"
-          marginRight="auto"
-        >
-          <Icon as={GiShoppingBag} boxSize="24" />
-          <Flex ml="6" direction="column">
-            <Text fontWeight="bold">Armazen do front-web</Text>
-            <Text>9:34 min restante</Text>
+          <Flex
+            alignItems="center"
+            marginY="12"
+            w="full"
+            marginRight="auto"
+          >
+            <Icon as={GiShoppingBag} boxSize="24" />
+            <Flex ml="6" direction="column">
+              <Text fontWeight="bold">Armazen do front-web</Text>
+              {cart.length > 0 && <Countdown />}
+            </Flex>
           </Flex>
-        </Flex>
 
-        <Stack spacing="20">
-          <Text fontWeight="bold">Revise seus items</Text>
-          <CartTable />
+          <Stack spacing="20">
+            <Text fontWeight="bold">Revise seus items</Text>
+            <CartTable />
 
-          <HStack justifyContent="space-between">
-            <Button onClick={onOpen}>Finalizar compra</Button>
-            <HStack alignItems="center">
-              <Text color="gray.400">Total</Text>
-              <Text fontSize="32" fontWeight="bold">
-                {total}
-              </Text>
+            <HStack justifyContent="space-between">
+              <Button onClick={onOpen}>Finalizar compra</Button>
+              <HStack alignItems="center">
+                <Text color="gray.400">Total</Text>
+                <Text fontSize="32" fontWeight="bold">
+                  {total}
+                </Text>
+              </HStack>
             </HStack>
-          </HStack>
-        </Stack>
-      </Flex>
-    </Stack>
+          </Stack>
+        </Flex>
+      </Stack>
+    </>
   );
 };

@@ -8,7 +8,6 @@ import {
 import { IoCartSharp } from 'react-icons/io5';
 import { FaStoreAlt } from 'react-icons/fa';
 import { FiChevronLeft } from 'react-icons/fi';
-
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 

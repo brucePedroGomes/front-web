@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   Button,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -27,15 +26,19 @@ export const AlertModal = ({ title, body }: Props) => {
     if (cart.length <= 0) {
       onOpen();
     }
-  }, [cart]);
+  }, [cart, onOpen]);
 
   return (
     <>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isCentered
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
-          <ModalCloseButton />
           <ModalBody>{body}</ModalBody>
 
           <ModalFooter>

@@ -1,11 +1,13 @@
 import { useToast } from '@chakra-ui/toast';
-import React, {
+
+import {
   createContext,
-  Dispatch,
   ReactNode,
   useContext,
   useState,
 } from 'react';
+
+import { addMinutes } from 'date-fns';
 
 import { api } from '../services/api';
 
@@ -21,6 +23,7 @@ type Product = {
 
 type CartContextData = {
   cart: Product[];
+  expirationDate: Date;
   addProduct: (productId: number) => Promise<void>;
   removeProduct: (productId: number) => void;
   updateProductAmount: (productId: number, amount: number) => void;
@@ -37,10 +40,19 @@ export const CartProvider = ({
   children: ReactNode;
 }) => {
   const [cart, setCart] = useState<Product[]>([]);
+
+  const [expirationDate, setExpirationDate] = useState<Date>(
+    new Date()
+  );
+
   const toast = useToast();
 
   const addProduct = async (productId: number) => {
     try {
+      if (cart.length === 0) {
+        setExpirationDate(addMinutes(new Date(), 15));
+      }
+
       const productExists = cart.find(
         (product) => product.id === productId
       );
@@ -125,6 +137,7 @@ export const CartProvider = ({
     <CartContext.Provider
       value={{
         cart,
+        expirationDate,
         addProduct,
         removeProduct,
         updateProductAmount,
