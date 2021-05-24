@@ -7,11 +7,15 @@ import {
   Flex,
   Text,
   useDisclosure,
-  Container,
+  Box,
+  Button,
+  IconButton,
+  Tooltip,
 } from '@chakra-ui/react';
 
 import { useEffect, useState } from 'react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { AiOutlineClose } from 'react-icons/ai';
 import { api } from '../../services/api';
 import { Products } from '../../components/Products';
 
@@ -43,25 +47,44 @@ export const Home = () => {
   const TriangleIcon = isOpen ? TriangleUpIcon : TriangleDownIcon;
 
   return (
-    <Container>
+    <Box>
       {categories.length > 0 && (
         <>
-          <Stack m="8" alignItems="center">
+          <Stack alignItems="center" justifyContent="center" mt="16">
             <Menu onClose={onClose} onOpen={onOpen}>
-              <MenuButton border="2px" px={4} py={2} w={600}>
-                <Flex
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Text>
-                    {selectedCategory
-                      ? selectedCategory.name
-                      : 'Selecione a categoria'}
-                  </Text>
+              <Flex>
+                <MenuButton as={Button} px={4} py={2} w={600}>
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Text>
+                      {selectedCategory
+                        ? selectedCategory.name
+                        : 'Selecione a categoria'}
+                    </Text>
 
-                  <TriangleIcon />
-                </Flex>
-              </MenuButton>
+                    <TriangleIcon />
+                  </Flex>
+                </MenuButton>
+                {selectedCategory && (
+                  <Tooltip
+                    label="Remover filtro"
+                    bg="gray.200"
+                    borderRadius="4"
+                    color="gray.900"
+                    fontSize="md"
+                  >
+                    <IconButton
+                      ml="2"
+                      bg="none"
+                      aria-label="ok"
+                      icon={<AiOutlineClose />}
+                      onClick={() => setSelectedCategory(undefined)}
+                    />
+                  </Tooltip>
+                )}
+              </Flex>
               <MenuList w={600}>
                 {categories.map((category) => (
                   <MenuItem
@@ -76,10 +99,10 @@ export const Home = () => {
                 ))}
               </MenuList>
             </Menu>
+            <Products categoryId={selectedCategory?.id} />
           </Stack>
-          <Products categoryId={selectedCategory?.id} />
         </>
       )}
-    </Container>
+    </Box>
   );
 };

@@ -39,14 +39,14 @@ export const CartTable = () => {
   };
 
   return (
-    <Table w="3xl">
+    <Table w={900}>
       <Thead>
         <Tr>
           <Th>Qtd</Th>
           <Th>Item</Th>
           <Th>Preço</Th>
-          <Th w="6">Subtotal</Th>
-          <Th />
+          <Th>Subtotal</Th>
+          <Th w="6" />
         </Tr>
       </Thead>
       <Tbody>

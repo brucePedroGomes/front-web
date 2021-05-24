@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useCart } from '../../hooks/useCart';
 import { GiShoppingBag } from 'react-icons/gi';
-import { CartTable } from '../../components/Table';
+import { CartTable } from '../../components/CartTable';
 import { formatPrice } from '../../utils/formatPrice';
 import { AlertModal } from '../../components/AlertModal';
 import { useHistory } from 'react-router';
@@ -39,56 +39,55 @@ export const Cart = () => {
   };
 
   return (
-    <>
-      <Stack spacing="16" alignItems="center">
-        <Flex direction="column" align="center" m="8">
-          <Heading>Finalizar pedido</Heading>
+    <Stack alignItems="center" m="6" w="100hv" h="80vh">
+      <Flex direction="column" align="center">
+        <Heading>Finalizar pedido</Heading>
 
-          <AlertModal
-            title="Seu carrinho está vazio."
-            body="Voltar para lista de produtos"
-          />
+        <AlertModal
+          title="Seu carrinho está vazio."
+          body="Voltar para lista de produtos"
+        />
 
-          <CheckoutModal
-            closeOnOverlayClick={false}
-            isOpen={isOpen}
-            onClose={onClose}
-            body="Pedido realizado com sucesso!"
-          >
-            <Button colorScheme="green" onClick={handleCheckout}>
-              Fechar
-            </Button>
-          </CheckoutModal>
+        <CheckoutModal
+          closeOnOverlayClick={false}
+          isOpen={isOpen}
+          onClose={onClose}
+          body="Pedido realizado com sucesso!"
+        >
+          <Button colorScheme="green" onClick={handleCheckout}>
+            Fechar
+          </Button>
+        </CheckoutModal>
 
-          <Flex
-            alignItems="center"
-            marginY="12"
-            w="full"
-            marginRight="auto"
-          >
-            <Icon as={GiShoppingBag} boxSize="24" />
-            <Flex ml="6" direction="column">
-              <Text fontWeight="bold">Armazen do front-web</Text>
-              {cart.length > 0 && <Countdown />}
-            </Flex>
+        <Flex
+          alignItems="center"
+          marginY="8"
+          w="full"
+          marginRight="auto"
+        >
+          <Icon as={GiShoppingBag} boxSize="24" />
+          <Flex ml="6" direction="column">
+            <Text fontWeight="bold">Armazen do front-web</Text>
+            {cart.length > 0 && <Countdown />}
           </Flex>
-
-          <Stack spacing="20">
-            <Text fontWeight="bold">Revise seus items</Text>
-            <CartTable />
-
-            <HStack justifyContent="space-between">
-              <Button onClick={onOpen}>Finalizar compra</Button>
-              <HStack alignItems="center">
-                <Text color="gray.400">Total</Text>
-                <Text fontSize="32" fontWeight="bold">
-                  {total}
-                </Text>
-              </HStack>
-            </HStack>
-          </Stack>
         </Flex>
-      </Stack>
-    </>
+
+        <Stack>
+          <Text fontWeight="bold" ml="4">
+            Revise seus items
+          </Text>
+          <CartTable />
+          <HStack pt="10" justifyContent="space-between">
+            <Button onClick={onOpen}>Finalizar compra</Button>
+            <HStack alignItems="center">
+              <Text color="gray.400">Total:</Text>
+              <Text fontSize="32" fontWeight="bold">
+                {total}
+              </Text>
+            </HStack>
+          </HStack>
+        </Stack>
+      </Flex>
+    </Stack>
   );
 };
