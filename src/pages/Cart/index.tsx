@@ -40,7 +40,7 @@ export const Cart = () => {
 
   return (
     <Stack alignItems="center" m="6" w="100hv" h="80vh">
-      <Flex direction="column" align="center">
+      <Flex direction="column" align="center" pb="5">
         <Heading>Finalizar pedido</Heading>
 
         <AlertModal
@@ -74,7 +74,7 @@ export const Cart = () => {
 
         <Stack>
           <Text fontWeight="bold" ml="4">
-            Revise seus items
+            Revise seus itens
           </Text>
           <CartTable />
           <HStack pt="10" justifyContent="space-between">

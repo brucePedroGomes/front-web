@@ -32,12 +32,12 @@ export const Home = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   useEffect(() => {
-    const loadCategorias = async () => {
+    const loadCategories = async () => {
       const response = await api.get('/categories');
       setCategories(response.data);
     };
 
-    loadCategorias();
+    loadCategories();
   }, []);
 
   const handleCategorySelection = (id: number) => {
@@ -78,7 +78,7 @@ export const Home = () => {
                     <IconButton
                       ml="2"
                       bg="none"
-                      aria-label="ok"
+                      aria-label="remove filter"
                       icon={<AiOutlineClose />}
                       onClick={() => setSelectedCategory(undefined)}
                     />
