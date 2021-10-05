@@ -30,7 +30,7 @@ $ yarn
 
 ```bash
 # run the api service
-$ yarn json-server
+$ yarn server
 ```
 
 _Obs.: Before to continue, be sure to have the API running_
